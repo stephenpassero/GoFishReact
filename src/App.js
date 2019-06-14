@@ -1,21 +1,25 @@
 import React from 'react'
 import Game from './models/Game'
-import LoginView from './LoginView'
+import LoginView from './views/LoginView'
+import GameView from './views/GameView'
 
 class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      currentView: 'login'
+      currentView: 'login',
+      game: ''
     }
   }
   startGame(playerName, numOfPlayers) {
     const game = new Game(playerName, numOfPlayers)
     game.startGame()
     this.setState(() => {
-      return {currentView: 'game'}
+      return {
+        currentView: 'game',
+        game
+      }
     })
-    alert("The game is started")
   }
 
   render() {
@@ -24,7 +28,9 @@ class App extends React.Component {
         <LoginView onLogin={this.startGame.bind(this)}/>
       )
     } else if (this.state.currentView === 'game') {
-
+      return (
+        <GameView game={this.state.game}/>
+      )
     }
   }
 }

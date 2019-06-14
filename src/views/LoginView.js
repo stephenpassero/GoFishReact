@@ -15,14 +15,12 @@ class LoginView extends React.Component {
   }
 
   setPlayerName(text) {
-    console.log(`Player name ${text}`)
     this.setState(() => {
       return {playerName: text}
     })
   }
 
   setNumOfPlayers(num) {
-    console.log(`Num of players ${num}`)
     this.setState(() => {
       return {numOfPlayers: num}
     })
@@ -37,7 +35,7 @@ class LoginView extends React.Component {
         <input type="number" className="textInput"
         onChange={e => this.setNumOfPlayers(e.target.value)}
         min="2" max="6" required/>
-        <input type="submit" onClick={(e) => this.submit(e)} value="Submit"/>
+        <input type="submit" onClick={e => this.submit(e)} value="Submit"/>
       </form>
     )
   }
