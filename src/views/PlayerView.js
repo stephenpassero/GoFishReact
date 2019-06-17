@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import CardView from './CardView'
-import Card from '../models/Card'
 
-class OpponentView extends React.Component {
+class PlayerView extends React.Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     cards: PropTypes.array.isRequired,
@@ -12,7 +11,7 @@ class OpponentView extends React.Component {
 
   generateCards(cards) {
     return cards.map((card, index) => {
-      return (<CardView key={index} cardPath={Card.getBackPath()} />)
+      return (<CardView key={index} cardPath={card.imagePath()} />)
     })
   }
 
@@ -32,4 +31,4 @@ class OpponentView extends React.Component {
   }
 }
 
-export default OpponentView
+export default PlayerView

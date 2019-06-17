@@ -16,7 +16,8 @@ describe('OpponentView', () => {
 
   it('shows the number of cards the bot has', () => {
     // I give the OpponentView 6 card when I create it
-    const cards = wrapper.find('.cardBack')
+    const cards = wrapper.find('CardView')
+    debugger
     expect(cards.length).toEqual(6)
   })
 })

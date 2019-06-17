@@ -15,6 +15,10 @@ class Card {
   imagePath() {
     return `${this._suit.charAt(0).toLowerCase()}${this._rank.toLowerCase()}`
   }
+
+  static getBackPath() {
+    return 'backs_red'
+  }
 }
 
 export default Card

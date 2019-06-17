@@ -1,6 +1,7 @@
 import React from 'react'
 import OpponentView from './OpponentView'
 import PropTypes from 'prop-types'
+import PlayerView from './PlayerView'
 
 class GameView extends React.Component {
   static propTypes = {
@@ -14,10 +15,17 @@ class GameView extends React.Component {
     })
   }
 
+  renderPlayer() {
+    const game = this.props.game
+    const player = game.findPlayer(game.playerName())
+    return <PlayerView name={game.playerName()} cards={player.cards()} pairs={player.pairs()} />
+  }
+
   render() {
     return (
       <div>
         {this.generateOpponents()}
+        {this.renderPlayer()}
       </div>
     )
   }
