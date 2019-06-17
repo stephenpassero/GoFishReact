@@ -23,7 +23,7 @@ class CardView extends React.Component {
 
   render() {
     if (this.props.bot) {
-      return (<img alt='cardBack' className='card' src={cardBack}/>)
+      return (<img alt='cardBack' className='cardBack' src={cardBack}/>)
     }
     return (
       <img alt='cardBack' onClick={this.props.updateSelectedRank.bind(this, this.props.card.rank())} className={`${this.getClasses()}`} src={this.findPathPlayer()} />
