@@ -40,7 +40,7 @@ class LoginView extends React.Component {
         <input type="number" className="textInput"
         onChange={e => this.setNumOfPlayers(e.target.value)}
         min="2" max="6" required/>
-        <input type="submit" id='submit' onClick={e => this.submit(e)} value="Submit"/>
+        <button id='submit' onClick={e => this.submit(e)}>Submit</button>
       </form>
     )
   }

@@ -8,7 +8,13 @@ describe('PlayerView', () => {
   beforeEach(() => {
     const card = new Card('10', 'Diamonds')
     const card2 = new Card('2', 'Spades')
-    wrapper = shallow(<PlayerView name={'Me!'} cards={[card, card2]} pairs={[]}/>)
+    wrapper = shallow(<PlayerView
+                        name={'Me!'}
+                        cards={[card, card2]}
+                        pairs={[]}
+                        selectedRank=''
+                        updateSelectedRank={() => {}}
+                      />)
   })
 
   it('renders the player\'s name', () => {

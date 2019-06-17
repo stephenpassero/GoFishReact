@@ -7,7 +7,8 @@ class PlayerView extends React.Component {
     name: PropTypes.string.isRequired,
     cards: PropTypes.array.isRequired,
     pairs: PropTypes.array,
-    updateSelectedRank: PropTypes.func.isRequired
+    updateSelectedRank: PropTypes.func.isRequired,
+    selectedRank: PropTypes.string.isRequired
   }
 
   generateCards(cards) {

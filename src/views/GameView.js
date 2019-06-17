@@ -28,17 +28,17 @@ class GameView extends React.Component {
   }
 
   generateOpponents() {
-    return Object.values(this.props.game.botNames()).map((botName, index) => {
+    return Object.values(this.props.game.botNames()).map((botName) => {
       const bot = this.props.game.findPlayer(botName)
       return <OpponentView
-                className='opponent'
-                key={index}
-                name={botName}
-                cards={bot.cards()}
-                pairs={bot.pairs()}
-                selectedOpponent={this.state.selectedOpponent}
-                updateSelectedOpponent={this.updateSelectedOpponent.bind(this)}
-              />
+        className='opponent'
+        key={botName}
+        name={botName}
+        cards={bot.cards()}
+        pairs={bot.pairs()}
+        selectedOpponent={this.state.selectedOpponent}
+        updateSelectedOpponent={this.updateSelectedOpponent.bind(this)}
+      />
     })
   }
 
