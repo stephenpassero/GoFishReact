@@ -16,7 +16,7 @@ class Card {
     return `${this._suit.charAt(0).toLowerCase()}${this._rank.toLowerCase()}`
   }
 
-  static getBackPath() {
+  getBackPath() {
     return 'backs_red'
   }
 }

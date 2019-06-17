@@ -6,12 +6,18 @@ class PlayerView extends React.Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     cards: PropTypes.array.isRequired,
-    pairs: PropTypes.array
+    pairs: PropTypes.array,
+    updateSelectedRank: PropTypes.func.isRequired
   }
 
   generateCards(cards) {
     return cards.map((card, index) => {
-      return (<CardView key={index} cardPath={card.imagePath()} />)
+      return (<CardView
+                key={index}
+                selectedRank={this.props.selectedRank}
+                updateSelectedRank={this.props.updateSelectedRank}
+                card={card}
+              />)
     })
   }
 
