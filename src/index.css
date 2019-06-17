@@ -65,6 +65,11 @@ label {
   flex-wrap: nowrap;
 }
 
+.runNextRound {
+  display: flex;
+  justify-content: center;
+}
+
 .requestCards {
   display: flex;
   justify-content: center;

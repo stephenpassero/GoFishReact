@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-class LogView extends React.Component {
+class GameLog extends React.Component {
   static propTypes = {
     log: PropTypes.array.isRequired
   }
@@ -19,4 +19,4 @@ class LogView extends React.Component {
   }
 }
 
-export default LogView
+export default GameLog

@@ -9,7 +9,7 @@ describe('GameView', () => {
   beforeEach(() => {
     game = new Game('HumanPlayer', 2)
     game.startGame()
-    wrapper = shallow(<GameView game={game}/>)
+    wrapper = shallow(<GameView game={game} endGame={() => {}}/>)
   })
 
   it('renders the correct number of bots', () => {
@@ -21,7 +21,7 @@ describe('GameView', () => {
   })
 
   it('updates selectedRank state when a card is clicked', () => {
-    const mountedWrapper = mount(<GameView game={game}/>)
+    const mountedWrapper = mount(<GameView game={game} endGame={() => {}}/>)
     const playerCard = mountedWrapper.find('.card').first()
     playerCard.simulate('click')
     expect(playerCard.html()).toContain('selected')
@@ -29,7 +29,7 @@ describe('GameView', () => {
   })
 
   it('updates selectedOpponent state when an opponent is clicked', () => {
-    const mountedWrapper = mount(<GameView game={game}/>)
+    const mountedWrapper = mount(<GameView game={game} endGame={() => {}}/>)
     const opponent = mountedWrapper.find('.opponent').first()
     opponent.simulate('click')
     expect(opponent.html()).toContain('selected')
@@ -44,7 +44,7 @@ describe('GameView', () => {
     const card3 = new Card('J', 'Hearts')
     player.setHand(card)
     bot.setHand(card2, card3)
-    const mountedWrapper = mount(<GameView game={game}/>)
+    const mountedWrapper = mount(<GameView game={game} endGame={() => {}}/>)
     const playerCard = mountedWrapper.find('.card').first()
     const opponent = mountedWrapper.find('.opponent').first()
     playerCard.simulate('click')

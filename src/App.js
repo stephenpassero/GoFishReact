@@ -11,6 +11,7 @@ class App extends React.Component {
       game: ''
     }
   }
+
   startGame(playerName, numOfPlayers) {
     const game = new Game(playerName, numOfPlayers)
     game.startGame()
@@ -22,15 +23,20 @@ class App extends React.Component {
     })
   }
 
+  endGame() {
+    alert('the game has ended')
+    this.setState(() => {
+      return { currentView: 'endGame' }
+    })
+  }
+
   render() {
     if (this.state.currentView === 'login') {
-      return (
-        <LoginView onLogin={this.startGame.bind(this)}/>
-      )
+      return <LoginView onLogin={this.startGame.bind(this)}/>
     } else if (this.state.currentView === 'game') {
-      return (
-        <GameView game={this.state.game}/>
-      )
+      return <GameView endGame={this.endGame.bind(this)} game={this.state.game}/>
+    } else if (this.state.currentView === 'endGame') {
+      return 'end game'//<EndGameView game={this.state.game} />
     }
   }
 }

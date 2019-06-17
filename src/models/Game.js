@@ -132,7 +132,7 @@ class Game {
     }
   }
 
-  skipRound() {
+  skipRounds() {
     this.incrementPlayerTurn()
     this.runBotRounds()
   }
@@ -149,7 +149,6 @@ class Game {
     this.incrementPlayerTurn()
   }
 
-  // I'm not really sure how to simplify this any more
   runRound(playerName, targetName, rank) {
     const player = this.findPlayer(playerName)
     const target = this.findPlayer(targetName)

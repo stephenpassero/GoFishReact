@@ -2,18 +2,21 @@ import React from 'react'
 import OpponentView from './OpponentView'
 import PropTypes from 'prop-types'
 import PlayerView from './PlayerView'
-import LogView from './LogView'
+import GameLog from './GameLog'
+import SkipTurnButton from './SkipTurnButton'
 
 class GameView extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       selectedRank: '',
-      selectedOpponent: ''
+      selectedOpponent: '',
+      humanPlayer: this.props.game.findPlayer(this.props.game.playerName())
     }
   }
   static propTypes = {
-    game: PropTypes.object.isRequired
+    game: PropTypes.object.isRequired,
+    endGame: PropTypes.func.isRequired
   }
 
   updateSelectedRank(rank) {
@@ -44,14 +47,12 @@ class GameView extends React.Component {
   }
 
   renderPlayer() {
-    const game = this.props.game
-    const player = game.findPlayer(game.playerName())
     return (
       <div className='player'>
         <PlayerView
-          name={game.playerName()}
-          cards={player.cards()}
-          pairs={player.pairs()}
+          name={this.props.game.playerName()}
+          cards={this.state.humanPlayer.cards()}
+          pairs={this.state.humanPlayer.pairs()}
           selectedRank={this.state.selectedRank}
           updateSelectedRank={this.updateSelectedRank.bind(this)}
         />
@@ -62,6 +63,17 @@ class GameView extends React.Component {
   runRound() {
     const game = this.props.game
     game.runRound(game.playerName(), this.state.selectedOpponent, this.state.selectedRank)
+    this.setState(() => {
+      return {
+        selectedOpponent: '',
+        selectedRank: ''
+      }
+    })
+  }
+
+  runBotRounds() {
+    this.props.game.skipRounds()
+    this.gameOver()
     this.setState(() => {
       return {
         selectedOpponent: '',
@@ -81,6 +93,15 @@ class GameView extends React.Component {
     return ''
   }
 
+  gameOver() {
+    for (const player of Object.values(this.props.game.players())) {
+      if (player.cardsLeft() > 0) {
+        return false
+      }
+    }
+    this.props.endGame()
+  }
+
   render() {
     return (
       <div>
@@ -89,7 +110,11 @@ class GameView extends React.Component {
         </div>
         {this.renderPlayer()}
         {this.renderRequestButton()}
-        <LogView log={this.props.game.log()} />
+        <GameLog log={this.props.game.log()} />
+        <SkipTurnButton
+          humanPlayer={this.state.humanPlayer}
+          runNextRound={this.runBotRounds.bind(this)}
+        />
       </div>
     )
   }
