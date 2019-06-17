@@ -1,9 +1,12 @@
 import React from 'react'
 import CardBack from '../img/cards/backs_red.png'
+import PropTypes from 'prop-types'
 
 class OpponentView extends React.Component {
-  constructor(props) {
-    super(props)
+  static propTypes = {
+    name: PropTypes.string.isRequired,
+    cards: PropTypes.array.isRequired,
+    pairs: PropTypes.array.isRequired
   }
 
   generateCards(cards) {

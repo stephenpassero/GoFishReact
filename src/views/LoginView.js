@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class LoginView extends React.Component {
   constructor(props) {
@@ -7,6 +8,10 @@ class LoginView extends React.Component {
       playerName: '',
       numOfPlayers: 0
     }
+  }
+
+  static propTypes = {
+    onLogin: PropTypes.func.isRequired
   }
 
   submit(event) {
@@ -30,12 +35,12 @@ class LoginView extends React.Component {
     return (
       <form>
         <label>Player Name</label>
-        <input type="text" onChange={e => this.setPlayerName(e.target.value)} className="textInput" required/>
+        <input type="text" id='name' onChange={e => this.setPlayerName(e.target.value)} className="textInput" required/>
         <label>Number of Players</label>
         <input type="number" className="textInput"
         onChange={e => this.setNumOfPlayers(e.target.value)}
         min="2" max="6" required/>
-        <input type="submit" onClick={e => this.submit(e)} value="Submit"/>
+        <input type="submit" id='submit' onClick={e => this.submit(e)} value="Submit"/>
       </form>
     )
   }

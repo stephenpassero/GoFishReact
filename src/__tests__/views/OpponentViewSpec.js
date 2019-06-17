@@ -1,5 +1,5 @@
 import React from 'react'
-import OpponentView from '../views/OpponentView'
+import OpponentView from '../../views/OpponentView'
 import { shallow } from 'enzyme'
 
 describe('OpponentView', () => {
@@ -15,7 +15,7 @@ describe('OpponentView', () => {
   })
 
   it('shows the number of cards the bot has', () => {
-    // Every player starts with 5 cards
+    // I give the OpponentView 6 card when I create it
     const cards = wrapper.find('.cardBack')
     expect(cards.length).toEqual(6)
   })

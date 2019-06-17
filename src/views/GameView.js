@@ -1,9 +1,10 @@
 import React from 'react'
 import OpponentView from './OpponentView'
+import PropTypes from 'prop-types'
 
 class GameView extends React.Component {
-  constructor(props) {
-    super(props)
+  static propTypes = {
+    game: PropTypes.object.isRequired
   }
 
   generateOpponents() {

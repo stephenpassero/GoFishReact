@@ -1,6 +1,6 @@
 import React from 'react'
-import GameView from '../views/GameView'
-import Game from '../models/Game'
+import GameView from '../../views/GameView'
+import Game from '../../models/Game'
 import { shallow } from 'enzyme'
 
 describe('GameView', () => {
