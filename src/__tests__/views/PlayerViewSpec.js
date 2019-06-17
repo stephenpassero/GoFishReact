@@ -32,7 +32,7 @@ describe('PlayerView', () => {
     expect(cards.length).toEqual(2)
   })
 
-  it('shows the number of pairs the bot has', () => {
+  it('shows the number of pairs the player has', () => {
     const pairs = wrapper.find('.pair')
     expect(pairs.length).toEqual(2)
   })

@@ -52,5 +52,6 @@ describe('GameView', () => {
     const requestButton = mountedWrapper.find('.requestButton')
     requestButton.simulate('click')
     expect(mountedWrapper.find('.card').length).toEqual(2)
+    expect(mountedWrapper.find('.logStatement').length).toBeGreaterThan(0)
   })
 })

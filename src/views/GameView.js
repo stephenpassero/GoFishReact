@@ -2,6 +2,7 @@ import React from 'react'
 import OpponentView from './OpponentView'
 import PropTypes from 'prop-types'
 import PlayerView from './PlayerView'
+import LogView from './LogView'
 
 class GameView extends React.Component {
   constructor(props) {
@@ -88,6 +89,7 @@ class GameView extends React.Component {
         </div>
         {this.renderPlayer()}
         {this.renderRequestButton()}
+        <LogView log={this.props.game.log()} />
       </div>
     )
   }

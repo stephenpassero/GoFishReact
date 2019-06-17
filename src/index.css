@@ -46,6 +46,18 @@ label {
   text-align: center;
 }
 
+.log {
+  text-align: left;
+  display: inline-block;
+  position: fixed;
+  left: 10px;
+  bottom: 10%;
+}
+
+.logStatement {
+  margin: 3px;
+}
+
 .flex-container {
   display: flex;
   justify-content: space-around;
