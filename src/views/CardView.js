@@ -1,6 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import cardBack from '../img/cards/backs_red.png'
+import Deck from '../models/Deck'
+
+let cardPaths = {}
+for (const card of new Deck().cards()) {
+  cardPaths[card.imagePath()] = require(`../img/cards/${card.imagePath()}.png`)
+}
 
 class CardView extends React.Component {
   static propTypes = {
@@ -11,7 +17,7 @@ class CardView extends React.Component {
   }
 
   findPathPlayer() {
-    return require(`../img/cards/${this.props.card.imagePath()}.png`)
+    return cardPaths[`${this.props.card.imagePath()}`]
   }
 
   getClasses() {

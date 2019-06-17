@@ -58,6 +58,28 @@ class GameView extends React.Component {
     )
   }
 
+  runRound() {
+    const game = this.props.game
+    game.runRound(game.playerName(), this.state.selectedOpponent, this.state.selectedRank)
+    this.setState(() => {
+      return {
+        selectedOpponent: '',
+        selectedRank: ''
+      }
+    })
+  }
+
+  renderRequestButton() {
+    if (this.state.selectedRank !== '' && this.state.selectedOpponent !== '') {
+      return (
+        <div className='requestCards'>
+          <button className='requestButton' onClick={this.runRound.bind(this)}>Request Cards</button>
+        </div>
+      )
+    }
+    return ''
+  }
+
   render() {
     return (
       <div>
@@ -65,6 +87,7 @@ class GameView extends React.Component {
           {this.generateOpponents()}
         </div>
         {this.renderPlayer()}
+        {this.renderRequestButton()}
       </div>
     )
   }
