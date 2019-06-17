@@ -1,19 +1,24 @@
 import React from 'react'
 import OpponentView from '../../views/OpponentView'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import Card from '../../models/Card'
 
 describe('OpponentView', () => {
-  let wrapper
+  let wrapper, card
   beforeEach(() => {
-    const card = new Card('4', 'Spades')
+    card = new Card('4', 'Spades')
     // The numbers are just placeholders for real card objects
-    wrapper = shallow(<OpponentView
+    wrapper = mount(<OpponentView
                         updateSelectedOpponent={() => {}}
                         selectedOpponent={'Player2'}
                         name={"Player3"}
                         cards={[card]}
+                        pairs={['K', '3']}
                       />)
+  })
+
+  afterEach(() => {
+    wrapper.unmount()
   })
 
   it('shows the bot\'s name', () => {
@@ -23,7 +28,12 @@ describe('OpponentView', () => {
 
   it('shows the number of cards the bot has', () => {
     // I give the OpponentView 1 card when I create it
-    const cards = wrapper.find('CardView')
+    const cards = wrapper.find('.cardBack')
     expect(cards.length).toEqual(1)
+  })
+
+  it('shows the number of pairs the bot has', () => {
+    const pairs = wrapper.find('.pair')
+    expect(pairs.length).toEqual(2)
   })
 })

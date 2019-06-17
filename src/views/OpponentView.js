@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import CardView from './CardView'
+import Card from '../models/Card'
 
 class OpponentView extends React.Component {
   static propTypes = {
@@ -13,7 +14,7 @@ class OpponentView extends React.Component {
 
   generateCards(cards) {
     return cards.map((card, index) => {
-      return (<CardView key={index} card={card} bot={true} />)
+      return (<CardView updateSelectedRank={() => {}} key={index} card={card} bot={true} />)
     })
   }
 
@@ -25,7 +26,11 @@ class OpponentView extends React.Component {
   }
 
   generatePairs(pairs) {
-    // Do something here
+    if (pairs.length !== 0) {
+      return pairs.map((rank, index) => {
+        return <CardView pair={true} key={index} updateSelectedRank={() => {}} card={new Card(rank, 'Spades')} />
+      })
+    }
     return ''
   }
 
@@ -34,7 +39,9 @@ class OpponentView extends React.Component {
       <div className={`${this.getClasses()}`} onClick={this.props.updateSelectedOpponent.bind(this, this.props.name)}>
         <h3>{this.props.name}</h3>
         {this.generateCards(this.props.cards)}
-        {this.generatePairs(this.props.pairs)}
+        <div className="pairs">
+          {this.generatePairs(this.props.pairs)}
+        </div>
       </div>
     )
   }

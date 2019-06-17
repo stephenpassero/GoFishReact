@@ -13,7 +13,8 @@ class CardView extends React.Component {
     card: PropTypes.object.isRequired,
     bot: PropTypes.bool,
     selectedRank: PropTypes.string,
-    updateSelectedRank: PropTypes.func
+    updateSelectedRank: PropTypes.func.isRequired,
+    pair: PropTypes.bool
   }
 
   findPathPlayer() {
@@ -23,6 +24,8 @@ class CardView extends React.Component {
   getClasses() {
     if (this.props.selectedRank === this.props.card.rank()) {
       return 'card selected'
+    } else if (this.props.pair) {
+      return 'pair'
     }
     return 'card'
   }
