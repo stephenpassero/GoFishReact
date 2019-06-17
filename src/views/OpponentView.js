@@ -6,7 +6,7 @@ class OpponentView extends React.Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     cards: PropTypes.array.isRequired,
-    pairs: PropTypes.array.isRequired
+    pairs: PropTypes.array
   }
 
   generateCards(cards) {
