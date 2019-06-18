@@ -115,7 +115,7 @@ class Game {
       player.addCards(...cards)
       return true
     }
-    return false
+    return 'Go Fish'
   }
 
   pairCards(player) {
@@ -138,14 +138,14 @@ class Game {
   }
 
   runBasicRoundSteps(logOptions, playerToPair, playersToRefill) {
-    this.addLog(logOptions[0], logOptions[1], logOptions[2])
+    this.addLog(logOptions[0], logOptions[1], logOptions[2], logOptions[3])
     this.pairCards(playerToPair)
     this.refillCards(...playersToRefill)
   }
 
-  goFishing(player) {
+  goFishing(player, target, rank) {
     player.addCards(...this._deck.deal(1))
-    this.runBasicRoundSteps([player.name()], player, [player])
+    this.runBasicRoundSteps([player.name(), '', '', `asked ${target} for a(n) ${rank} but went fishing`], player, [player])
     this.incrementPlayerTurn()
   }
 
@@ -153,10 +153,10 @@ class Game {
     const player = this.findPlayer(playerName)
     const target = this.findPlayer(targetName)
     // If the target has a card that the player asked for
-    if (this.requestCards(player, target, rank)) {
-      this.runBasicRoundSteps([playerName, targetName, rank], player, [player, target])
+    if (this.requestCards(player, target, rank) === 'Go Fish') {
+      this.goFishing(player, targetName, rank)
     } else if (targetName) {
-      this.goFishing(player)
+      this.runBasicRoundSteps([playerName, target.name(), rank], player, [player, target])
     }
     this.runBotRounds()
   }

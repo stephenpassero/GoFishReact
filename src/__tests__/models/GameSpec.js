@@ -90,7 +90,7 @@ describe('Game', () => {
       player.setHand(card1)
       player2.setHand(card2)
       game.runRound(player.name(), player2.name(), card1.rank())
-      expect(game.log()).toContain(`${player.name()} went fishing`)
+      expect(game.log()).toContain(`${player.name()} asked ${player2.name()} for a(n) ${card1.rank()} but went fishing`)
     })
   })
 })
