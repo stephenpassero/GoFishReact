@@ -15,25 +15,22 @@ class GameView extends React.Component {
       humanPlayer: this.props.game.findPlayer(this.props.game.playerName())
     }
   }
+
   static propTypes = {
     game: PropTypes.object.isRequired,
     endGame: PropTypes.func.isRequired
   }
 
   updateSelectedRank(rank) {
-    this.setState(() => {
-      return { selectedRank: rank }
-    })
+    this.setState({ selectedRank: rank })
   }
 
   updateSelectedOpponent(opponentName) {
-    this.setState(() => {
-      return { selectedOpponent: opponentName }
-    })
+    this.setState({ selectedOpponent: opponentName })
   }
 
   generateOpponents() {
-    return Object.values(this.props.game.botNames()).map((botName) => {
+    return this.props.game.botNames().map((botName) => {
       const bot = this.props.game.findPlayer(botName)
       return <OpponentView
         className='opponent'

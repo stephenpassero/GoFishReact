@@ -6,8 +6,6 @@ class GameLog extends React.Component {
     log: PropTypes.array.isRequired
   }
 
-
-
   render() {
     return (
       <div className='log'>
