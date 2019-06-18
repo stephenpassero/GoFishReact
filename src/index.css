@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #277714;
 }
 
 code {
@@ -17,6 +18,10 @@ code {
   border-width: 6px;
   border-style: solid;
   border-radius: 3px;
+}
+
+input {
+  border-radius: 5px;
 }
 
 img {
@@ -43,6 +48,11 @@ label {
 .player {
   max-width: 550px;
   margin: 5px auto;
+  text-align: center;
+}
+
+.endGame {
+  margin: 20px auto;
   text-align: center;
 }
 

@@ -2,6 +2,7 @@ import React from 'react'
 import Game from './models/Game'
 import LoginView from './views/LoginView'
 import GameView from './views/GameView'
+import EndGameView from './views/EndGameView'
 
 class App extends React.Component {
   constructor() {
@@ -24,7 +25,6 @@ class App extends React.Component {
   }
 
   endGame() {
-    alert('the game has ended')
     this.setState(() => {
       return { currentView: 'endGame' }
     })
@@ -36,7 +36,7 @@ class App extends React.Component {
     } else if (this.state.currentView === 'game') {
       return <GameView endGame={this.endGame.bind(this)} game={this.state.game}/>
     } else if (this.state.currentView === 'endGame') {
-      return 'end game'//<EndGameView game={this.state.game} />
+      return <EndGameView rankings={this.state.game.playerPairs()} />
     }
   }
 }

@@ -8,7 +8,6 @@ class Deck extends React.Component {
   }
 
   render() {
-    debugger
     if (this.props.deck.cardsLeft() > 0) {
       return (
         <div className='deck'>
