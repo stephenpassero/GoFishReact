@@ -10,7 +10,7 @@ describe('LoginView', () => {
   })
 
   it('renders a form', () => {
-    expect(wrapper.find('form')).not.toEqual(undefined)
+    expect(wrapper.find('form').length).not.toEqual(0)
   })
 
   it('calls the onLogin prop when submitted with name and number of players', () => {

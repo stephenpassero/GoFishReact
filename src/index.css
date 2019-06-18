@@ -65,6 +65,11 @@ label {
   flex-wrap: nowrap;
 }
 
+.deck {
+  margin: 50px auto;
+  text-align:center;
+}
+
 .runNextRound {
   display: flex;
   justify-content: center;

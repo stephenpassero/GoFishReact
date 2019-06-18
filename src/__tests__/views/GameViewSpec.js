@@ -17,7 +17,11 @@ describe('GameView', () => {
   })
 
   it('renders the player', () => {
-    expect(wrapper.find('PlayerView')).not.toEqual(undefined)
+    expect(wrapper.find('PlayerView').length).not.toEqual(0)
+  })
+
+  it('renders a deck', () => {
+    expect(wrapper.find('Deck').length).not.toEqual(0)
   })
 
   it('updates selectedRank state when a card is clicked', () => {

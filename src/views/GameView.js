@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import PlayerView from './PlayerView'
 import GameLog from './GameLog'
 import SkipTurnButton from './SkipTurnButton'
+import Deck from './Deck'
 
 class GameView extends React.Component {
   constructor(props) {
@@ -108,6 +109,7 @@ class GameView extends React.Component {
         <div className='flex-container'>
           {this.generateOpponents()}
         </div>
+        <Deck deck={this.props.game.deck()} />
         {this.renderPlayer()}
         {this.renderRequestButton()}
         <GameLog log={this.props.game.log()} />
