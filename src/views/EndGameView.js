@@ -12,7 +12,7 @@ class EndGameView extends React.Component {
       <div className='rankings'>
         <h2>Rankings: </h2>
         {this.props.rankings.map((ranking, index) => {
-          return <h3 key='index' className="rankedItem">{index + 1}. {ranking.playerName}: {ranking.points}</h3>
+          return <h3 key='index' className="rankedItem">{index + 1}. {ranking.playerName}: {ranking.points} points</h3>
         })}
       </div>
     )
